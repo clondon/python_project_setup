@@ -1,43 +1,28 @@
 #!/bin/bash
-# Enable virutal environment
 
-PROJ_DIR="~/Documents/python_proj/test_dir"
-# Do not use spce when assigning variables, Do not use the $ when assigning variables
+# Steps
+# Allow the user to copy the pyton project skeleton to a new working directory
+# 1 - Since the new direct must be provided we examine the command line arguments.
+#   
 
-DEBUG="false"
-
-
-
-# Check target directory
-if [ -d "$PROJ_DIR" ]
-then
-    echo "Target directory exists, not creating!"
- 
-else
-    echo "Directory does not exist, creating directory $PROJ_DIR"
-    tree /f "$PROJ_DIR"
-    mkdir -p "$PROJ_DIR"
-    if [ $? -eq == 0 ]
-    then
-        echo "Directory was created"
-    fi
-fi
-
-
-
-exit 0
-echo "Creating Python project in ~/Documents/Projects/python_proj/skeleton/* ~/Documents/Projects/python_proj/$1."
-
+# Todo Enable virutal environment  - Next
 
 
 CMDLINEARG=$@
+CMDLINECOUNT=$#
+echo "$CMDLINEARG"
+echo "$CMDLINECOUNT"
 
-if [ $# -lt 2 ] # Test if the user entered a command line argument.
+
+if [ "$CMDLINECOUNT" == 0 ] # Test if the user entered a command line argument.
     then 
         echo "Command line arguments required."
-        echo "Usage $0 \"new_dir_name\""
+        echo "Usage $(basename ${0}) \"new_dir_name\""
         exit 0
 fi
+
+
+
 
 if [ "$DEBUG" == "true" ]
 then
