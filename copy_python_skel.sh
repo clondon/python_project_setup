@@ -2,33 +2,44 @@
 
 # Steps
 # Allow the user to copy the pyton project skeleton to a new working directory
-# 1 - Since the new direct must be provided we examine the command line arguments.
+# 1 - Since the new directory must be provided,  we examine the command line arguments.
 #   
 
-# Todo Enable virutal environment  - Next
+PROJ_DIR="~/Documents/Projects/python_proj/temp"
 
+# Todo Enable Python virutal environment  
+
+DEBUG="0"  
+
+# Use to test sections with   if [ $DEBUG" == "true" ]
+
+function debug_func  {
+    echo "Value of DEBUG = $DEBUG"
+    echo "Debug value $1"
+}
 
 CMDLINEARG=$@
 CMDLINECOUNT=$#
-echo "$CMDLINEARG"
-echo "$CMDLINECOUNT"
 
+
+for x in $CMDLINEARG
+do
+    echo "Creating $PROJ_DIR/$x"
+    mkdir -p "$PROJ_DIR/$x"
+done
+
+$(ls -l "$PROJ_DIR/$x")
+
+exit 0
 
 if [ "$CMDLINECOUNT" == 0 ] # Test if the user entered a command line argument.
     then 
         echo "Command line arguments required."
         echo "Usage $(basename ${0}) \"new_dir_name\""
-        exit 0
+        exit 0 # Exit if no command line arugument is provided
 fi
 
-
-
-
-if [ "$DEBUG" == "true" ]
-then
-echo "Length of command line arguments ${#CMDLINEARG}"
-echo "Number of command line arguments = ${#}"
-fi
+# Command line argument exists lets loop though the options
 
 
 for x in $CMDLINEARG
