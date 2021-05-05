@@ -5,12 +5,13 @@
 # 1 - Since the new directory must be provided,  we examine the command line arguments.
 #   
 
-PROJ_DIR="~/Documents/Projects/python_proj/temp"
+PROJDIR="/Users/charles/Documents/Projects/python_proj"
 
 # Todo Enable Python virutal environment  
-
+$(mkdir -p $PROJDIR/$1)
+echo "DONE"
 DEBUG="0"  
-
+exit
 # Use to test sections with   if [ $DEBUG" == "true" ]
 
 function debug_func  {
@@ -24,13 +25,16 @@ CMDLINECOUNT=$#
 
 for x in $CMDLINEARG
 do
+    target="$PROJ_DIR.$x"
     echo "Creating $PROJ_DIR/$x"
-    mkdir -p "$PROJ_DIR/$x"
+    
+    logger -i t copy_skel local0.info "Message"
+exit $?
 done
 
-$(ls -l "$PROJ_DIR/$x")
 
-exit 0
+exit $?
+
 
 if [ "$CMDLINECOUNT" == 0 ] # Test if the user entered a command line argument.
     then 
