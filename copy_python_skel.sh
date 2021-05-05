@@ -8,10 +8,10 @@
 PROJDIR="/Users/charles/Documents/Projects/python_proj"
 
 # Todo Enable Python virutal environment  
-$(mkdir -p $PROJDIR/$1)
-echo "DONE"
+
+
 DEBUG="0"  
-exit
+
 # Use to test sections with   if [ $DEBUG" == "true" ]
 
 function debug_func  {
@@ -22,36 +22,33 @@ function debug_func  {
 CMDLINEARG=$@
 CMDLINECOUNT=$#
 
+echo "Number of command line arugment $CMDLINECOUNT, $CMDLINEARG"
+if [ "$CMDLINECOUNT" -le 1 ]
+    then
+        echo "Usage - required command line arguments"
+fi
 
 for x in $CMDLINEARG
 do
-    target="$PROJ_DIR.$x"
-    echo "Creating $PROJ_DIR/$x"
-    
-    logger -i t copy_skel local0.info "Message"
-exit $?
+    echo "Creating $PROJDIR/$x"
+    TEMPDIR="$PROJDIR/$x"
+    echo "$TEMPDIR"
+    $(mkdir -p $TEMPDIR)
+    $(cp -R ~/Documents/Projects/python_proj/skeleton/ $TEMPDIR)
+    $(mv $TEMPDIR/NAME/NAME_tests.py $TEMPDIR/NAME/$x.py)
+    $(mv $TEMPDIR/NAME/ $TEMPDIR/$x.py)
+
 done
 
 
 exit $?
 
 
-if [ "$CMDLINECOUNT" == 0 ] # Test if the user entered a command line argument.
-    then 
-        echo "Command line arguments required."
-        echo "Usage $(basename ${0}) \"new_dir_name\""
-        exit 0 # Exit if no command line arugument is provided
-fi
+
 
 # Command line argument exists lets loop though the options
 
 
-for x in $CMDLINEARG
-    do
-        echo "$x"
-
-    done
-exit
 
 mkdir PROJ_DIR/$1
 echo $PROJ_DIR/$1
