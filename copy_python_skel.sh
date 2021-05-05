@@ -48,27 +48,3 @@ exit $?
 
 # Command line argument exists lets loop though the options
 
-
-
-mkdir PROJ_DIR/$1
-echo $PROJ_DIR/$1
-
-if [ ! -d $PROJ_DIR/$1 ]
-    then
-    echo "Created  ~/Documents/Projects/python_proj/$1"
-else
-     echo "Could not create  $PROJ_DIR/$1"
-     exit
-fi
-cp -R ~/Documents/Projects/python_proj/skeleton/ PROJ_DIR/$1
- # Rename NAME project directory
-mv ~/Documents/Projects/python_proj/$1/NAME  ~/Documents/Projects/python_proj/$1/$1
-mv ~/Documents/Projects/python_proj/$1/tests/NAME_tests.py  ~/Documents/Projects/python_proj/$1/tests/$1_test.py
-     
-
-
-echo "Copied in Python Skeleton to $1"
-tree -f $PROJ_DIR/$1
-
-
-exit 0
