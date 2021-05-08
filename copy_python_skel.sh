@@ -6,21 +6,33 @@
 #   
 
 # PROJDIR="/Users/charles/Documents/Projects/python_proj"
-PROJDIR="/Users/charles/Documents/Projects/python_proj/temp"
+PROJDIR="temp"
 # Todo Enable Python virutal environment  
 
 
+# Global Variables
 DEBUG="0"  
+CMDLINEARG=$@
+CMDLINECOUNT=$#
 
+# Functions
 # Use to test sections with   if [ $DEBUG" == "true" ]
-
 function debug_func  {
     echo "Value of DEBUG = $DEBUG"
     echo "Debug value $1"
 }
 
-CMDLINEARG=$@
-CMDLINECOUNT=$#
+
+# Check for local skeleton package
+if [ -f 'python_skel.tar' ]
+    then
+    echo "Using Python Skeleton file"
+    $(tar -xvf  python_skel.tar --directory ./$PROJ_DIR)
+    echo "Extaction done"
+fi
+
+
+exit
 
 echo "Number of command line arugment $CMDLINECOUNT, $CMDLINEARG"
 if [ "$CMDLINECOUNT" -le 1 ]
