@@ -5,8 +5,8 @@
 # 1 - Since the new directory must be provided,  we examine the command line arguments.
 #   
 
-PROJDIR="/Users/charles/Documents/Projects/python_proj"
-
+# PROJDIR="/Users/charles/Documents/Projects/python_proj"
+PROJDIR="/Users/charles/Documents/Projects/python_proj/temp"
 # Todo Enable Python virutal environment  
 
 
@@ -35,8 +35,8 @@ do
     echo "$TEMPDIR"
     $(mkdir -p $TEMPDIR)
     $(cp -R ~/Documents/Projects/python_proj/skeleton/ $TEMPDIR)
-    $(mv $TEMPDIR/NAME/NAME_tests.py $TEMPDIR/NAME/$x.py)
-    $(mv $TEMPDIR/NAME/ $TEMPDIR/$x.py)
+    $(mv $TEMPDIR/NAME/ $TEMPDIR/x$ )
+    # $(mv $TEMPDIR/NAME/ $TEMPDIR/$x.py)
 
 done
 
